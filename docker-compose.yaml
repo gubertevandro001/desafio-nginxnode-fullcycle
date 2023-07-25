@@ -1,6 +1,10 @@
 version: '3'
 
+ 
+
 services:
+
+ 
 
   node:
     build:
@@ -18,8 +22,9 @@ services:
     ports:
      - "3000:3000"
     depends_on: 
-       - mysql
-       - nginx
+      - mysql      
+
+ 
 
   nginx:
     build:
@@ -30,6 +35,11 @@ services:
       - mynetwork
     ports:
       - "8080:80"
+    depends_on: 
+      - node
+      - mysql
+
+ 
 
   mysql:
     image: mysql:5.7.16
@@ -46,11 +56,17 @@ services:
       - mynetwork
     ports:
       - "3306:3306"
+    healthcheck:
+      test: mysqladmin ping -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+      start_period: 5s
+      interval: 5s
+      timeout: 5s
+      retries: 55
 
 networks: 
   mynetwork:
     driver: bridge
 
+
 volumes:
-    exclude: 
-    
+    exclude:
