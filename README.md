@@ -10,8 +10,7 @@ Agora, abra seu navegador e digite:
 
 http://localhost:8080
 
-Aguarde um tempinho se o erro 502 aparecer, e recarregue a página. Pode levar um tempo de 2 a 3 minutos aproximadamente.
-
+Aguarde um tempinho se o erro 502 aparecer, e recarregue a página.
 
 
 
